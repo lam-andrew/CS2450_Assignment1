@@ -10,13 +10,35 @@
 package com.example.cs2450_assignment1;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TaskA extends Application {
 
-
     @Override
     public void start(Stage stage) throws Exception {
+        // Initialize constructs for the charge of food
+        Label foodChargeLabel = new Label("Enter meal cost: ");
+        TextField foodCharge = new TextField();
 
+        // Initialize constructs for 7 percent sales tax
+        
+
+        // Initialize constructs for 18 percent tip
+
+
+
+        // Initialize VBox to hold all other controls
+        VBox vBox = new VBox();
+        // Initialize Scene with VBox as the root
+        Scene myScene = new Scene(vBox, 600, 400);
+
+        // Stage initialization
+        stage.setScene(myScene);
+        stage.setTitle("Task A - Tip, Tax, and Total ");
+        stage.show();
     }
 }
