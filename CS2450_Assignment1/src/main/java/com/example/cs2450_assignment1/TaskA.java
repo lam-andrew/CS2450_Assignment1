@@ -6,7 +6,6 @@
  *              at a restaurant. When a button is clicked, the application should calculate and display the amount of
  *              an 18 percent tip on the total food charge, 7 percent sales tax, and the total of all three amounts.
  */
-
 package com.example.cs2450_assignment1;
 
 import javafx.application.Application;
@@ -21,6 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class TaskA extends Application {
     // Initialize constructs for the charge of food
@@ -38,7 +40,6 @@ public class TaskA extends Application {
     // Initialize constructs for total of food charge, tax, and tip
     Label totalLabel = new Label("Total: ");
     TextField total = new TextField();
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -80,7 +81,20 @@ public class TaskA extends Application {
     class calcClickHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent actionEvent) {
-            total.setText("hi");
+            // Calculate values
+            double charge = Double.parseDouble(foodCharge.getText());
+            double percentTax = charge * 0.07;
+            double percentTip = charge * 0.18;
+
+            // Utilize BigDecimal Class to round values to hundredths decimal place
+            BigDecimal taxRound = BigDecimal.valueOf(percentTax).setScale(2, RoundingMode.DOWN);
+            BigDecimal tipRound = BigDecimal.valueOf(percentTip).setScale(2, RoundingMode.DOWN);
+            BigDecimal totalRound = BigDecimal.valueOf(percentTax + percentTip + charge).setScale(2, RoundingMode.DOWN);
+
+            // Display final values on TextFields
+            tax.setText(String.valueOf(taxRound));
+            tip.setText(String.valueOf(tipRound));
+            total.setText(String.valueOf(totalRound));
         }
     }
 
