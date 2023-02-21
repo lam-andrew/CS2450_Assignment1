@@ -69,11 +69,55 @@ public class TaskB extends Application {
     class rollClickHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent actionEvent) {
-            // randomize dice
-            dice1.setImage(die2);
-            dice2.setImage(die3);
-        }
-    }
+            // Generate random number between 1 and 6
+            int rand1 = (int) Math.floor(Math.random() * (6 - 1 + 1) + 1);
+            int rand2 = (int) Math.floor(Math.random() * (6 - 1 + 1) + 1);
+
+            // Randomize dice1 based on value of rand1
+            switch (rand1) {
+                case 1:
+                    dice1.setImage(die1);
+                    break;
+                case 2:
+                    dice1.setImage(die2);
+                    break;
+                case 3:
+                    dice1.setImage(die3);
+                    break;
+                case 4:
+                    dice1.setImage(die4);
+                    break;
+                case 5:
+                    dice1.setImage(die5);
+                    break;
+                case 6:
+                    dice1.setImage(die6);
+                    break;
+            } // end switch
+
+            // Randomize dice2 based on value of rand2
+            switch (rand2) {
+                case 1:
+                    dice2.setImage(die1);
+                    break;
+                case 2:
+                    dice2.setImage(die2);
+                    break;
+                case 3:
+                    dice2.setImage(die3);
+                    break;
+                case 4:
+                    dice2.setImage(die4);
+                    break;
+                case 5:
+                    dice2.setImage(die5);
+                    break;
+                case 6:
+                    dice2.setImage(die6);
+                    break;
+            } // end switch
+        } // end handle
+    } // end RolLClickHandler
 
 
 }
