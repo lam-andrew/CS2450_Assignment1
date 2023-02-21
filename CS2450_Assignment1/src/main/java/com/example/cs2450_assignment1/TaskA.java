@@ -48,12 +48,13 @@ public class TaskA extends Application {
         tip.setEditable(false);
         total.setEditable(false);
 
+        // Configure GridPane 
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(20));
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-        gridPane.add(foodChargeLabel, 0, 1);
-        gridPane.add(foodCharge, 1, 1);
+        gridPane.add(foodChargeLabel, 0, 2);
+        gridPane.add(foodCharge, 1, 2);
         gridPane.add(taxLabel, 2, 1);
         gridPane.add(tax, 3, 1);
         gridPane.add(tipLabel, 2, 2);
@@ -61,6 +62,7 @@ public class TaskA extends Application {
         gridPane.add(totalLabel, 2, 3);
         gridPane.add(total, 3, 3);
 
+        // Create a calculate button
         Button calcButton = new Button("Calculate");
         calcButton.setOnAction(new calcClickHandler());
 
@@ -82,16 +84,21 @@ public class TaskA extends Application {
         @Override
         public void handle(ActionEvent actionEvent) {
             // Calculate values
-            double charge = Double.parseDouble(foodCharge.getText());
+            double charge = 0.0;
+            if(!foodCharge.getText().equals("")) {
+                charge = Double.parseDouble(foodCharge.getText());
+            }
             double percentTax = charge * 0.07;
             double percentTip = charge * 0.18;
 
             // Utilize BigDecimal Class to round values to hundredths decimal place
+            BigDecimal chargeRound = BigDecimal.valueOf(charge).setScale(2, RoundingMode.DOWN);
             BigDecimal taxRound = BigDecimal.valueOf(percentTax).setScale(2, RoundingMode.DOWN);
             BigDecimal tipRound = BigDecimal.valueOf(percentTip).setScale(2, RoundingMode.DOWN);
             BigDecimal totalRound = BigDecimal.valueOf(percentTax + percentTip + charge).setScale(2, RoundingMode.DOWN);
 
             // Display final values on TextFields
+            foodCharge.setText(String.valueOf(chargeRound));
             tax.setText(String.valueOf(taxRound));
             tip.setText(String.valueOf(tipRound));
             total.setText(String.valueOf(totalRound));
