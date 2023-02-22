@@ -42,13 +42,13 @@ public class TaskA extends Application {
     TextField total = new TextField();
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         // Set labels non-editable
         tax.setEditable(false);
         tip.setEditable(false);
         total.setEditable(false);
 
-        // Configure GridPane 
+        // Configure GridPane
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(20));
         gridPane.setHgap(10);

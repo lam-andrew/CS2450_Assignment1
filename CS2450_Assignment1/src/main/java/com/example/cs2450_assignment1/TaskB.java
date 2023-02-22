@@ -22,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class TaskB extends Application {
@@ -38,7 +39,7 @@ public class TaskB extends Application {
     ImageView dice2 = new ImageView(die2);
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         // Initialize GridPane
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(25));
@@ -58,14 +59,15 @@ public class TaskB extends Application {
 
         // Initialize Scene
         Scene myScene = new Scene(vBox, 400, 250);
+        myScene.setFill(Color.rgb(1, 255, 0));
 
         // Set up Stage
         stage.setTitle("Task B - Dice Simulator");
         stage.setScene(myScene);
         stage.show();
-
     }
 
+    // Handler class that rolls the dice
     class rollClickHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent actionEvent) {
@@ -75,46 +77,22 @@ public class TaskB extends Application {
 
             // Randomize dice1 based on value of rand1
             switch (rand1) {
-                case 1:
-                    dice1.setImage(die1);
-                    break;
-                case 2:
-                    dice1.setImage(die2);
-                    break;
-                case 3:
-                    dice1.setImage(die3);
-                    break;
-                case 4:
-                    dice1.setImage(die4);
-                    break;
-                case 5:
-                    dice1.setImage(die5);
-                    break;
-                case 6:
-                    dice1.setImage(die6);
-                    break;
+                case 1 -> dice1.setImage(die1);
+                case 2 -> dice1.setImage(die2);
+                case 3 -> dice1.setImage(die3);
+                case 4 -> dice1.setImage(die4);
+                case 5 -> dice1.setImage(die5);
+                case 6 -> dice1.setImage(die6);
             } // end switch
 
             // Randomize dice2 based on value of rand2
             switch (rand2) {
-                case 1:
-                    dice2.setImage(die1);
-                    break;
-                case 2:
-                    dice2.setImage(die2);
-                    break;
-                case 3:
-                    dice2.setImage(die3);
-                    break;
-                case 4:
-                    dice2.setImage(die4);
-                    break;
-                case 5:
-                    dice2.setImage(die5);
-                    break;
-                case 6:
-                    dice2.setImage(die6);
-                    break;
+                case 1 -> dice2.setImage(die1);
+                case 2 -> dice2.setImage(die2);
+                case 3 -> dice2.setImage(die3);
+                case 4 -> dice2.setImage(die4);
+                case 5 -> dice2.setImage(die5);
+                case 6 -> dice2.setImage(die6);
             } // end switch
         } // end handle
     } // end RolLClickHandler
